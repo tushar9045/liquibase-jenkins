@@ -9,12 +9,10 @@ pipeline {
     }
 
     stages {
-        stage('Set up Liquibase') {
+
+	stage('Set up Liquibase') {
             steps {
-                withEnv(["PATH+LIQUIBASE=${LIQUIBASE_HOME}/bin"]) {
-                    // Display Liquibase version
-                    bat 'liquibase --version'  // Use bat instead of sh for Windows
-                }
+                bat '"D:\\liquibase\\liquibase" --version'
             }
         }
 
