@@ -18,12 +18,12 @@ pipeline {
 
         stage('Update Database') {
             steps {
-                // Execute Liquibase update with embedded credentials
+                // Execute Liquibase update with embedded credentials and JDBC driver path
                 bat """D:\\liquibase\\liquibase --changeLogFile=db/src/main/dbschema/master.xml \
                     --url=${env.DATABASE_URL} \
                     --username=${env.DATABASE_USERNAME} \
                     --password=${env.DATABASE_PASSWORD} \
-                    --classpath=${env.JDBC_DRIVER_PATH} \
+                    --classpath="${env.JDBC_DRIVER_PATH}" \
                     update"""
             }
         }
