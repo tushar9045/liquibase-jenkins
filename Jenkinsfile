@@ -10,7 +10,7 @@ pipeline {
 
     stages {
 
-	stage('Set up Liquibase') {
+        stage('Set up Liquibase') {
             steps {
                 bat '"D:\\liquibase\\liquibase" --version'
             }
@@ -19,7 +19,9 @@ pipeline {
         stage('Update Database') {
             steps {
                 // Execute Liquibase update with embedded credentials
-	       bat "D:\\liquibase\\liquibase --changeLogFile=db/src/main/dbschema/master.xml --url=%DATABASE_URL% --username=%DATABASE_USERNAME% --password=%DATABASE_PASSWORD% update"
+               bat 'liquibase --changeLogFile=db/src/main/dbschema/master.xml 
+                   --url=jdbc:mysql://localhost:8082/db1 --username=tushar --password=tushar 
+                   --classpath="C:\Users\37095\Downloads\mysql-connector-j-8.4.0\mysql-connector-java-8.4.0.jar" update'
 
             }
         }
