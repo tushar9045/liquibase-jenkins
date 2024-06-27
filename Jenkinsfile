@@ -19,7 +19,8 @@ pipeline {
         stage('Update Database') {
             steps {
                 // Execute Liquibase update with embedded credentials
-                bat "D:\\liquibase\\liquibase --changeLogFile=db/src/main/dbschema/master.xml --url=%DATABASE_URL% --username=%DATABASE_USERNAME% --password=%DATABASE_PASSWORD% update"
+	       bat "D:\\liquibase\\liquibase --changeLogFile=db/src/main/dbschema/master.xml --url=%DATABASE_URL% --username=%DATABASE_USERNAME% --password=%DATABASE_PASSWORD% update"
+
             }
         }
 
