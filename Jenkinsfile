@@ -28,21 +28,6 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                // Placeholder for running tests, if applicable
-                bat 'echo "Running tests"'
-                // You can add specific test commands here
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                // Placeholder for deployment steps, if applicable
-                bat 'echo "Deployment step"'
-                // You can add specific deployment commands here
-            }
-        }
     }
 
     post {
