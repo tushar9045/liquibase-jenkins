@@ -7,7 +7,6 @@ pipeline {
         DATABASE_PASSWORD = 'tushar'
         LIQUIBASE_HOME = 'D:\\liquibase'
         //JDBC_DRIVER_PATH = 'C:\\Users\\37095\\Downloads\\mysql-connector-j-8.4.0\\mysql-connector-java-8.4.0.jar'
-    	JDBC_DRIVER_PATH = 'c/Users/37095/Downloads/mysql-connector-j-8.4.0/mysql-connector-java-8.4.0.jar'
     }
 
     stages {
@@ -24,7 +23,7 @@ pipeline {
                     --url=${env.DATABASE_URL} \
                     --username=${env.DATABASE_USERNAME} \
                     --password=${env.DATABASE_PASSWORD} \
-                    --classpath="${env.JDBC_DRIVER_PATH}" \
+                    --classpath=\mysql-connector-j-8.4.0.jar\
                     update"""
             }
         }
