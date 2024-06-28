@@ -6,7 +6,6 @@ pipeline {
         DATABASE_USERNAME = 'tushar'
         DATABASE_PASSWORD = 'tushar'
         LIQUIBASE_HOME = 'D:\\liquibase'
-        //JDBC_DRIVER_PATH = 'C:\\Users\\37095\\Downloads\\mysql-connector-j-8.4.0\\mysql-connector-java-8.4.0.jar'
     }
 
     stages {
@@ -18,16 +17,16 @@ pipeline {
 
         stage('Update Database') {
             steps {
-                // Execute Liquibase update with embedded credentials and JDBC driver path
-                bat """D:\\liquibase\\liquibase --changeLogFile=db/src/main/dbschema/master.xml \
+                bat """
+                    D:\\liquibase\\liquibase --changeLogFile=db/src/main/dbschema/master.xml \
                     --url=${env.DATABASE_URL} \
                     --username=${env.DATABASE_USERNAME} \
                     --password=${env.DATABASE_PASSWORD} \
-                    --classpath=\mysql-connector-j-8.4.0.jar\
-                    update"""
+                    --classpath=mysql-connector-java-8.4.0.jar \
+                    update
+                """
             }
         }
-
     }
 
     post {
