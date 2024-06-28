@@ -6,7 +6,8 @@ pipeline {
         DATABASE_USERNAME = 'tushar'
         DATABASE_PASSWORD = 'tushar'
         LIQUIBASE_HOME = 'D:\\liquibase'
-        JDBC_DRIVER_PATH = 'C:\\Users\\37095\\Downloads\\mysql-connector-j-8.4.0\\mysql-connector-java-8.4.0.jar'
+        //JDBC_DRIVER_PATH = 'C:\\Users\\37095\\Downloads\\mysql-connector-j-8.4.0\\mysql-connector-java-8.4.0.jar'
+    	JDBC_DRIVER_PATH = 'c/Users/37095/Downloads/mysql-connector-j-8.4.0/mysql-connector-java-8.4.0.jar'
     }
 
     stages {
