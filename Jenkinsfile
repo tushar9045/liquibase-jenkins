@@ -9,7 +9,7 @@ pipeline {
     }
 
 
-
+stages{
      stage('Liquibase Update') {
             steps {
                 script {
@@ -24,6 +24,7 @@ pipeline {
                 }
             }
         }
+}        
      post {
         always {
             cleanWs()
