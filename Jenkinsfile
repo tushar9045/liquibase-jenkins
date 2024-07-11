@@ -2,38 +2,32 @@ pipeline {
     agent any
 
     environment {
-        DATABASE_URL = 'jdbc:mysql://localhost:8082/db1'
-        DATABASE_USERNAME = 'tushar'
-        DATABASE_PASSWORD = 'tushar'
-        LIQUIBASE_HOME = 'D:\\liquibase'
+        LIQUIBASE_DRIVER = 'com.mysql.cj.jdbc.Driver'
+        LIQUIBASE_URL = credentials('db_url')
+        USERNAME = credentials('db_username')
+        PASSWORD = credentials('db_password')
     }
 
-    stages {
-        stage('Set up Liquibase') {
+
+
+     stage('Liquibase Update') {
             steps {
-                bat '"D:\\liquibase\\liquibase" --version'
+                script {
+                    // Construct Liquibase command with credentials directly in sh step
+                    sh """
+                    liquibase --driver=${env.LIQUIBASE_DRIVER} \
+                        --url=${env.LIQUIBASE_URL} \
+                        --username=${env.LIQUIBASE_USERNAME} \
+                        --password=${env.LIQUIBASE_PASSWORD} \
+                        update
+                    """
+                }
             }
         }
-
-        stage('Update Database') {
-            steps {
-                bat """
-                    D:\\liquibase\\liquibase --changeLogFile=db/src/main/dbschema/master.xml \
-                    --url=${env.DATABASE_URL} \
-                    --username=${env.DATABASE_USERNAME} \
-                    --password=${env.DATABASE_PASSWORD} \
-                    --classpath=mysql-connector-java-8.4.0.jar \
-                    update
-                """
-            }
-        }
-    }
-
-    post {
+     post {
         always {
             cleanWs()
-            echo "Pipeline finished"
         }
-    }
-}
+    }    
 
+}    
