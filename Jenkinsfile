@@ -20,8 +20,7 @@ stages{
                         --username=${env.USERNAME} \
                         --password=${env.PASSWORD} \
                         --changeLogFile=db/src/main/dbschema/master.xml \
-
-                        update
+                        updatesql
                     """
                 }
             }
