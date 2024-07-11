@@ -17,8 +17,10 @@ stages{
                     sh """
                     liquibase --driver=${env.LIQUIBASE_DRIVER} \
                         --url=${env.LIQUIBASE_URL} \
-                        --username=${env.LIQUIBASE_USERNAME} \
-                        --password=${env.LIQUIBASE_PASSWORD} \
+                        --username=${env.USERNAME} \
+                        --password=${env.PASSWORD} \
+                        --changeLogFile=db/src/main/dbschema/master.xml \
+
                         update
                     """
                 }
