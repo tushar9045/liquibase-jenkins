@@ -6,7 +6,7 @@ pipeline {
         LIQUIBASE_URL = credentials('db_url')
         USERNAME = credentials('db_username')
         PASSWORD = credentials('db_password')
-        JDBC_DRIVER_PATH = '/home/tushar/liquibase/liquibase-example/mysql-connector-j-8.4.0.jar' 
+        JDBC_DRIVER_PATH = '/var/lib/jenkins//workspace/liquibase_main/mysql-connector-j-8.4.0.jar' 
     }
 
 
@@ -27,5 +27,11 @@ stages{
                 }
             }
         }
-}        
+} 
+         post {
+        always {
+            cleanWs()
+        }
+    }    
+    
 }    
