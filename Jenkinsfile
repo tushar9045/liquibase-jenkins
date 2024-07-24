@@ -21,7 +21,7 @@ stages{
                         --url=${env.LIQUIBASE_URL} \
                         --username=${env.USERNAME} \
                         --password=${env.PASSWORD} \
-                        --changeLogFile=db/src/main/dbschema/master.xml \
+                        --changeLogFile=${WORKSPACE}/db/src/main/dbschema/master.xml \
                         updatesql
                     """
                 }
